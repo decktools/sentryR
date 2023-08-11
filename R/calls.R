@@ -85,10 +85,10 @@ calls_to_stacktrace <- function(calls) {
 
   # Remove "boring" calls within internal error handling functions,
   # as in https://github.com/rstudio/shiny/blob/master/R/conditions.R#L399
-  do_keep <- !(df$`function` %in% c(
-    "stop", ".handleSimpleError", "h",
-    "doTryCatch", "tryCatchList", "tryCatchOne"
-  ))
+  do_keep <- !(
+    df$`function` %in%
+    c(".handleSimpleError", "h", "doTryCatch", "tryCatchList", "tryCatchOne")
+  )
   df <- df[do_keep, ]
 
   # Name the vector elements of each column by the bare function name
